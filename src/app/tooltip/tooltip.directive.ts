@@ -48,11 +48,17 @@ export class TooltipDirective {
   /* tslint:enable */
 
   @Input('options') set options(value: any) {
-    if (value && defaultOptions){
+    if (value && defaultOptions) {
       this._options = value;
+      if (value['show-delay']) {
+        this._showDelay = this.options['show-delay'];
+      }
+      if (value['hide-delay']) {
+        this._hideDelay = this.options['hide-delay'];
+      }
     }
   }
-  get options(){
+  get options() {
     return this._options;
   }
 
